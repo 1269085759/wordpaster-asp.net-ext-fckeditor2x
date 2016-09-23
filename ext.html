@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>WordPaster For FCKEditor2.x,ExtJS</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link type="text/css" rel="Stylesheet" href="WordPaster/WordPaster.css"/>
+    <link type="text/css" rel="stylesheet" href="extjs/resources/css/ext-all.css"/>
+    <script type="text/javascript" src="extjs/adapter/ext/ext-base.js"></script>
+    <script type="text/javascript" src="extjs/ext-all.js"></script>
+	<script type="text/javascript" src="fckeditor/fckeditor.js"></script>
+    <script type="text/javascript" src="WordPaster/WordPaster.js"></script>
+</head>
+<body>
+<input id="btnShowWindow" value="打开FCK编辑器窗口" type="button" />
+<script type="text/jscript" language="javascript">
+	var win;
+	var pasterMgr = new PasterManager();
+	pasterMgr.Config["PostUrl"] = "http://localhost:2094/asp.net/upload.aspx";
+	pasterMgr.Load();
+
+	function FCKeditor_OnComplete(editorInstance)
+	{
+		pasterMgr.Init(editorInstance);
+	}
+
+	Ext.get("btnShowWindow").on("click", function()
+	{
+		if (!win)
+		{
+			win = new Ext.Window({
+				title: "窗口",
+				layout: "border",
+				width: 500,
+				height: 400,
+
+				modal: false,
+				closeAction: "hide",
+				plain: true,
+				maximizable: true,
+
+				items: [
+                {
+                	xtype: "textarea",
+                	name: "content",
+                	title: "组织人员",
+                	region: "center",
+                	listeners: {
+                		"render": function(f)
+                		{
+                			fckEditor = new FCKeditor("content");
+                			fckEditor.ToolbarSet = "Basic";
+                			fckEditor.Height = 400;
+                			fckEditor.BasePath = "fckeditor/";
+                			//fckEditor.Config['CustomConfigurationsPath'] = "/fckeditor/fckconfig.js"
+                			fckEditor.ReplaceTextarea();
+                		}
+                	}
+                }
+            ],
+				buttons: [
+					{ text: "获取内容", handler: function()
+					{
+						var f = FCKeditorAPI.GetInstance('content');
+						alert(f.Name);
+						alert(f.GetData());
+					}
+					},
+					{ text: "关闭", handler: function() { win.hide(); } }
+				]
+			});
+		}
+
+		win.show(this);
+	});
+</script>
+</body>
+</html>

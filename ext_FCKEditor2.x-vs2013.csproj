@@ -314,6 +314,9 @@
     <Content Include="WordPaster\json2.min.js" />
     <Content Include="WordPaster\paster.png" />
     <Content Include="WordPaster\upload.gif" />
+    <Content Include="WordPaster\w.app.js" />
+    <Content Include="WordPaster\w.edge.js" />
+    <Content Include="WordPaster\w.file.js" />
     <Content Include="WordPaster\WordPaster.css" />
     <Content Include="WordPaster\WordPaster.js" />
   </ItemGroup>

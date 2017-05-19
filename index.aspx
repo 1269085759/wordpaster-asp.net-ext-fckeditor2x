@@ -9,6 +9,9 @@
     <link rel="stylesheet" type="text/css" href="extjs/resources/css/ext-all.css"/>
     <script type="text/javascript" src="extjs/adapter/ext/ext-base.js"></script>
     <script type="text/javascript" src="extjs/ext-all.js"></script>
+    <script type="text/javascript" src="WordPaster/w.edge.js" charset="utf-8"></script>
+    <script type="text/javascript" src="WordPaster/w.app.js" charset="utf-8"></script>
+    <script type="text/javascript" src="WordPaster/w.file.js" charset="utf-8"></script>
 	<script type="text/javascript" src="fckeditor/fckeditor.js"></script>
     <script type="text/javascript" src="WordPaster/json2.min.js" charset="utf-8"></script>
     <script type="text/javascript" src="WordPaster/jquery.min.js"></script>
